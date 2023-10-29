@@ -1,0 +1,69 @@
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:views="clr-namespace:MAUI.MaintenanceApp.ViewModels"
+             x:Class="MAUI.MaintenanceApp.Views.Login"
+             xmlns:ViewModel="clr-namespace:MAUI.MaintenanceApp.ViewModels"
+             x:DataType="ViewModel:LoginViewModel"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit">
+
+    <ContentPage.BindingContext>
+        <views:LoginViewModel />
+    </ContentPage.BindingContext>
+
+    <ScrollView>
+        <VerticalStackLayout Spacing="25"
+                Padding="30,0"
+                VerticalOptions="Center">
+            <Label
+              Text="Welcome to Login"
+              SemanticProperties.HeadingLevel="Level1"
+              FontSize="32"
+              HorizontalOptions="Center" />
+            <Grid>
+                <Image 
+                  x:Name="backgroundImage" 
+                  Source="Resources/Images/sven021.jpg"
+                  Aspect="AspectFill"
+                  HorizontalOptions="Start"/>
+            </Grid>
+            <FlexLayout VerticalOptions="Center">
+                <Grid Padding="25" VerticalOptions="Start" HorizontalOptions="Start">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="151"/>
+                        <ColumnDefinition Width="191"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="47"/>
+                        <RowDefinition Height="47"/>
+                        <RowDefinition Height="47"/>
+                        <RowDefinition Height="47"/>
+                        <RowDefinition Height="47"/>
+                        <RowDefinition Height="57"/>
+                        <RowDefinition Height="47"/>
+                    </Grid.RowDefinitions>
+                    <Label Grid.Column="0" Grid.Row="0" Text="Name: " VerticalOptions="Center"/>
+                    <Label Grid.Column="0" Grid.Row="1" Text="Last Name: " VerticalOptions="Center"/>
+                    <Label Grid.Column="0" Grid.Row="2" Text="E-mail:" VerticalOptions="Center"/>
+                    <Label Grid.Column="0" Grid.Row="3" Text="Password: " VerticalOptions="Center"/>
+                    <Label Grid.Column="0" Grid.Row="4" Text="Confirm Password: " VerticalOptions="Center"/>
+
+                    <Entry Grid.Column="1" Grid.Row="0" Text=""/>
+                    <Entry Grid.Column="1" Grid.Row="1" Text=""/>
+                    <Entry Grid.Column="1" Grid.Row="2" Text=""/>
+                    <Entry Grid.Column="1" Grid.Row="3" Text=""/>
+                    <Entry Grid.Column="1" Grid.Row="4" Text="" />
+
+                    <RadioButton Grid.Row="5" Grid.Column="0" x:Name="radioButtonExistingAccount" Content="Existing account" IsChecked="{Binding IsExistingAccountChecked}" />
+                    <RadioButton Grid.Row="5" Grid.Column="1" x:Name="radioButtonNewAccount" Content="New account" IsChecked="{Binding IsNewAccountChecked}"/>
+                    <Button Grid.Row="6" Grid.Column="0"
+                        Command="{Binding LoginMaintenanceCommand}"
+                        CommandParameter="{Binding .}"
+                        x:Name="ButtonLogin"
+                        Text="Login"
+                        SemanticProperties.Hint="Login Button"
+                        HorizontalOptions="Start" />   
+                </Grid>
+            </FlexLayout>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

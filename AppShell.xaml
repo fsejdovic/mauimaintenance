@@ -4,11 +4,20 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:local="clr-namespace:MAUI.MaintenanceApp"
-    Shell.FlyoutBehavior="Disabled">
+    xmlns:views="clr-namespace:MAUI.MaintenanceApp.Views">
 
-    <ShellContent
-        Title="Home"
-        ContentTemplate="{DataTemplate local:MainPage}"
-        Route="MainPage" />
-
+    <TabBar>
+        <Tab Title="Welcome">
+            <ShellContent ContentTemplate="{DataTemplate local:MainPage}"></ShellContent>
+        </Tab>
+        <Tab Title="Login">
+            <ShellContent ContentTemplate="{DataTemplate views:Login }"></ShellContent>
+        </Tab>
+        <Tab Title="Settings">
+            <ShellContent ContentTemplate="{DataTemplate views:Settings}"></ShellContent>
+        </Tab>
+        <Tab Title="Working Space">
+            <ShellContent ContentTemplate="{DataTemplate views:WorkingSpace}"></ShellContent>
+        </Tab>
+    </TabBar>
 </Shell>

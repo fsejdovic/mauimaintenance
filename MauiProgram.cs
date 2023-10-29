@@ -1,4 +1,6 @@
-﻿using Microsoft.Extensions.Logging;
+﻿using CommunityToolkit.Maui;
+using MAUI.MaintenanceApp.ViewModels;
+using Microsoft.Extensions.Logging;
 
 namespace MAUI.MaintenanceApp
 {
@@ -9,15 +11,16 @@ namespace MAUI.MaintenanceApp
             var builder = MauiApp.CreateBuilder();
             builder
                 .UseMauiApp<App>()
+                .UseMauiCommunityToolkit()
                 .ConfigureFonts(fonts =>
                 {
                     fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
                     fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
                 });
 
-#if DEBUG
-		builder.Logging.AddDebug();
-#endif
+            //Dependency injection...
+            builder.Services.AddSingleton<MainPage>();
+            builder.Services.AddSingleton<LoginViewModel>();
 
             return builder.Build();
         }
